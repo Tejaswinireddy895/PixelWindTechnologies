@@ -143,7 +143,7 @@ export default function Navbar() {
                         <a href="https://www.linkedin.com/company/pixelwind-technologies/?originalSubdomain=in" target="_blank" className="w-10 h-10 flex items-center justify-center bg-white border rounded-xl hover:bg-brand hover:text-white">
                           <BsLinkedin size={18} />
                         </a>
-                        <a href="https://www.instagram.com" target="_blank" className="w-10 h-10 flex items-center justify-center bg-white border rounded-xl hover:bg-brand hover:text-white">
+                        <a href="https://www.instagram.com/pixelwind__technologies/" target="_blank" className="w-10 h-10 flex items-center justify-center bg-white border rounded-xl hover:bg-brand hover:text-white">
                           <BsInstagram size={18} />
                         </a>
                       </div>

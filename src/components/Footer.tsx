@@ -22,7 +22,7 @@ export default function Footer() {
             <div className="flex gap-3">
   {[
     { icon: BsLinkedin, link: "https://www.linkedin.com/company/pixelwind-technologies" },
-    { icon: BsInstagram, link: "https://www.instagram.com/yourpage" },
+    { icon: BsInstagram, link: "https://www.instagram.com/pixelwind__technologies/" },
     { icon: BsTwitterX, link: "https://twitter.com/yourpage" },
   ].map((item, i) => {
     const Icon = item.icon;

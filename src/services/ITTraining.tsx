@@ -10,7 +10,7 @@ export default function ITTraining() {
       subtitle="Industry-aligned tech training that builds job-ready professionals. Learn from practitioners, work on real projects, and land your dream role."
       tags={["FULL STACK","PYTHON","JAVA","DATA SCIENCE","CLOUD","DEVOPS","PLACEMENT","CERTIFICATION"]}
       statsTitle="Our Training Impact"
-      stats={[{ value:"500+", label:"Students Trained" },{ value:"98%", label:"Placement Rate" },{ value:"50+", label:"Tech Programs" }]}
+      stats={[{ value:"5000+", label:"Students Trained" },{ value:"98%", label:"Placement Rate" },{ value:"50+", label:"Tech Programs" }]}
       featuresTitle="Training That Gets You Hired"
       featuresSubtitle="Every program is crafted with one goal — making you job-ready from day one with real-world skills that employers are actively hiring for."
       features={[

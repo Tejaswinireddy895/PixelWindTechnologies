@@ -29,7 +29,7 @@ export default function AboutPage() {
               Pixelwind Technologies is an ISO 9001:2015 certified organization specializing in IT training, corporate skill development, staffing solutions, and technology services — bridging the gap between academic learning and industry expectations.
             </p>
             <div className="flex justify-center gap-12 flex-wrap">
-              {[{ n:"3+",l:"Years of Excellence" },{ n:"500+",l:"Students Trained" },{ n:"50+",l:"Corporate Partners" },{ n:"98%",l:"Satisfaction Rate" }].map(s => (
+              {[{ n:"3+",l:"Years of Excellence" },{ n:"5000+",l:"Students Trained" },{ n:"50+",l:"Corporate Partners" },{ n:"98%",l:"Satisfaction Rate" }].map(s => (
                 <div key={s.l} className="text-center">
                   <p className="text-4xl font-extrabold text-brand">{s.n}</p>
                   <p className="text-sm text-gray-500 mt-1">{s.l}</p>

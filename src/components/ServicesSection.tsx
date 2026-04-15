@@ -26,11 +26,23 @@ export default function ServicesSection() {
           ))}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {services.map((svc) => (
+          {services.map((svc,index) => (
             <Link key={svc.id} href={svc.href}
               className="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-brand hover:shadow-xl hover:-translate-y-1.5 transition-all duration-200">
-              <div className="text-4xl mb-4">{svc.emoji}</div>
-              <h3 className="font-bold text-gray-900 text-sm mb-2 group-hover:text-brand transition-colors">{svc.title}</h3>
+<div className="mb-4">
+  <div
+    className={`w-12 h-12 flex items-center justify-center rounded-xl
+    ${index % 6 === 0 ? "bg-blue-100 text-blue-600" : ""}
+    ${index % 6 === 1 ? "bg-green-100 text-green-600" : ""}
+    ${index % 6 === 2 ? "bg-orange-100 text-orange-600" : ""}
+    ${index % 6 === 3 ? "bg-purple-100 text-purple-600" : ""}
+    ${index % 6 === 4 ? "bg-pink-100 text-pink-600" : ""}
+    ${index % 6 === 5 ? "bg-cyan-100 text-cyan-600" : ""}
+    `}
+  >
+    <svc.icon size={22} />
+  </div>
+</div>           <h3 className="font-bold text-gray-900 text-sm mb-2 group-hover:text-brand transition-colors">{svc.title}</h3>
               <p className="text-gray-500 text-xs leading-relaxed mb-4">{svc.desc}</p>
               <div className="flex items-center gap-1 text-brand text-xs font-semibold">Learn More <FiArrowRight size={12} /></div>
             </Link>

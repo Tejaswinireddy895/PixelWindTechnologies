@@ -83,7 +83,7 @@ export default function Hero() {
                   <p className="text-white/70 text-sm mt-1">Pixelwind Technologies · Est. 2021</p>
                 </div>
                 <div className="flex gap-8 justify-center">
-                  {[{ n:"500+", l:"Students" },{ n:"98%", l:"Placement" },{ n:"50+", l:"Partners" }].map((st) => (
+                  {[{ n:"5000+", l:"Students" },{ n:"98%", l:"Placement" },{ n:"50+", l:"Partners" }].map((st) => (
                     <div key={st.l} className="text-center">
                       <p className="text-white font-extrabold text-2xl">{st.n}</p>
                       <p className="text-white/60 text-xs">{st.l}</p>

@@ -17,7 +17,7 @@ export default function CTASection() {
               Ready to Transform<br/>Your Career?
             </h2>
             <p className="text-white/70 text-base max-w-lg mx-auto mb-8">
-              Join 500+ professionals who have already accelerated their growth with Pixelwind Technologies.
+              Join 5000+ professionals who have already accelerated their growth with Pixelwind Technologies.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <Link href="/contact" className="flex items-center gap-2 bg-white text-brand font-bold px-8 py-4 rounded-full hover:bg-gray-100 transition-all shadow-xl hover:scale-[1.02]">

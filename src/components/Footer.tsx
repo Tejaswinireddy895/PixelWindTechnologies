@@ -20,12 +20,25 @@ export default function Footer() {
             </div>
             <p className="text-sm leading-relaxed mb-5">ISO 9001:2015 certified IT training, staffing, and technology solutions from Andhra Pradesh.</p>
             <div className="flex gap-3">
-              {[BsLinkedin, BsInstagram, BsTwitterX].map((Icon, i) => (
-                <a key={i} href="#" className="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-brand hover:text-white transition-all text-gray-400">
-                  <Icon size={15} />
-                </a>
-              ))}
-            </div>
+  {[
+    { icon: BsLinkedin, link: "https://www.linkedin.com/company/pixelwind-technologies" },
+    { icon: BsInstagram, link: "https://www.instagram.com/yourpage" },
+    { icon: BsTwitterX, link: "https://twitter.com/yourpage" },
+  ].map((item, i) => {
+    const Icon = item.icon;
+    return (
+      <a
+        key={i}
+        href={item.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-brand hover:text-white transition-all text-gray-400"
+      >
+        <Icon size={15} />
+      </a>
+    );
+  })}
+</div>
           </div>
 
           {/* Training */}

@@ -102,7 +102,7 @@ export default function ContactPage() {
                 ))}
               </div>
               <div className="grid grid-cols-3 gap-4">
-                {[{ n:"500+",l:"Students Trained" },{ n:"98%",l:"Placement Rate" },{ n:"50+",l:"Corporate Partners" }].map(s => (
+                {[{ n:"5000+",l:"Students Trained" },{ n:"98%",l:"Placement Rate" },{ n:"50+",l:"Corporate Partners" }].map(s => (
                   <div key={s.l} className="bg-white rounded-2xl p-5 border border-gray-100 text-center hover:border-brand hover:shadow-md transition-all">
                     <p className="text-2xl font-extrabold text-brand">{s.n}</p>
                     <p className="text-xs text-gray-500 mt-1">{s.l}</p>

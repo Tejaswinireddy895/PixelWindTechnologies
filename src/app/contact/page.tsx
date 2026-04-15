@@ -66,24 +66,28 @@ export default function ContactPage() {
   const [errMsg, setErrMsg] = useState("");
 
   const validate = () => {
-    const e: Record<string,string> = {};
+  const e: Record<string,string> = {};
 
-    if (!form.name.trim()) e.name = "Full name is required.";
+  if (!form.name.trim()) e.name = "Full name is required.";
 
-    if (!form.email.trim()) e.email = "Email address is required.";
-    else if (!/\S+@\S+\.\S+/.test(form.email))
-      e.email = "Enter a valid email address.";
+  if (!form.email.trim()) e.email = "Email address is required.";
+  else if (!/\S+@\S+\.\S+/.test(form.email))
+    e.email = "Enter a valid email address.";
 
-    if (!/^(\+91)\d{10}$/.test(form.phone))
-      e.phone = "Enter valid phone number";
+  if (!form.phone.trim() || form.phone === "+91")
+    e.phone = "Phone number is required.";
+  else if (!/^\+91\s\d{5}\s\d{5}$/.test(form.phone))
+    e.phone = "Enter valid phone number.";
 
-    if (!form.service) e.service = "Please select a service.";
+  if (!form.service)
+    e.service = "Service is required.";
 
-    if (!form.message.trim()) e.message = "Message is required.";
+  if (!form.message.trim())
+    e.message = "Message is required.";
 
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  };
+  setErrors(e);
+  return Object.keys(e).length === 0;
+};
 
   const handleSubmit = async () => {
     if (!validate()) return;
@@ -180,6 +184,11 @@ export default function ContactPage() {
                   }}
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm"
                 />
+                {errors.phone && (
+  <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+    <FiAlertCircle size={11}/> {errors.phone}
+  </p>
+)}
               </div>
 
               {/* SERVICE */}
@@ -192,21 +201,36 @@ export default function ContactPage() {
                   <option value="">Select a service</option>
                   {SERVICES_LIST.map(s => <option key={s}>{s}</option>)}
                 </select>
+                {errors.service && (
+  <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+    <FiAlertCircle size={11}/> {errors.service}
+  </p>
+)}
               </div>
 
               {/* MESSAGE */}
-              <div className="mb-6">
-                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                  Message <span className="text-red-500">*</span>
-                </label>
-                <textarea value={form.message} onChange={(e)=>setForm(prev => ({...prev, message:e.target.value}))}
-                  className="w-full border rounded-xl p-3"/>
-              </div>
+             <div className="mb-6">
+  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+    Message <span className="text-red-500">*</span>
+  </label>
 
-              <button onClick={handleSubmit}
-                className="w-full bg-brand text-white py-4 rounded-xl">
-                Send Message
-              </button>
+  <textarea 
+    value={form.message} 
+    onChange={(e)=>setForm(prev => ({...prev, message:e.target.value}))}
+    className="w-full border rounded-xl p-3"
+  />
+
+  {errors.message && (
+    <p className="text-red-500 text-xs mt-2 mb-2 flex items-center gap-1">
+      <FiAlertCircle size={11}/> {errors.message}
+    </p>
+  )}
+</div>
+
+<button onClick={handleSubmit}
+  className="w-full bg-brand text-white py-4 rounded-xl">
+  Send Message
+</button>
 
             </div>
 

@@ -82,7 +82,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold text-xs mb-4 uppercase tracking-widest">Contact</h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2.5 text-sm"><FiMail size={15} className="text-brand mt-0.5 flex-shrink-0" /> info@pixelwind.in</li>
+              <li className="flex items-start gap-2.5 text-sm"><FiMail size={15} className="text-brand mt-0.5 flex-shrink-0" /> pwtvizag@gmail.com</li>
               <li className="flex items-start gap-2.5 text-sm"><FiPhone size={15} className="text-brand mt-0.5 flex-shrink-0" /> +91 93989 29970</li>
               <li className="flex items-start gap-2.5 text-sm"><FiMapPin size={15} className="text-brand mt-0.5 flex-shrink-0" /> Andhra Pradesh, India</li>
             </ul>

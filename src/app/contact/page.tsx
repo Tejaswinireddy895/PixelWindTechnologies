@@ -76,8 +76,8 @@ export default function ContactPage() {
 
   if (!form.phone.trim() || form.phone === "+91")
     e.phone = "Phone number is required.";
-  else if (!/^\+91\s\d{5}\s\d{5}$/.test(form.phone))
-    e.phone = "Enter valid phone number.";
+  else if (!/^\+91\d{10}$/.test(form.phone))
+  e.phone = "Enter valid phone number.";
 
   if (!form.service)
     e.service = "Service is required.";
@@ -90,22 +90,46 @@ export default function ContactPage() {
 };
 
   const handleSubmit = async () => {
-    if (!validate()) return;
-    setStatus("loading");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        cache: "no-store",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+  if (!validate()) return;
+
+  setStatus("loading");
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      cache: "no-store",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+
+    if (res.ok) {
+      setStatus("success");
+
+      // ✅ CLEAR FORM AFTER SUCCESS
+      setForm({
+        name: "",
+        email: "",
+        phone: "+91",
+        service: "",
+        message: ""
       });
-      if (res.ok) setStatus("success");
-      else setStatus("error");
-    } catch {
+
+      // ✅ CLEAR ERRORS
+      setErrors({});
+
+      // ✅ OPTIONAL: AUTO RESET MESSAGE AFTER 3s
+      setTimeout(() => {
+        setStatus("idle");
+      }, 3000);
+
+    } else {
       setStatus("error");
     }
-  };
 
+  } catch {
+    setStatus("error");
+  }
+};
   return (
     <>
       <Navbar />
@@ -131,7 +155,7 @@ export default function ContactPage() {
                 <h2 className="text-2xl font-extrabold mb-8">Contact Information</h2>
 
                 {[
-                  { Icon:FiMail, label:"Email", val:"info@pixelwind.in" },
+                  { Icon:FiMail, label:"Email", val:"pwtvizag@gmail.com" },
                   { Icon:FiPhone, label:"Phone", val:"+91 93989 29970" },
                   { Icon:FiMapPin, label:"Location", val:"Andhra Pradesh, India" },
                   { Icon:FiClock, label:"Hours", val:"Mon–Sat, 9am–7pm IST" },
@@ -227,10 +251,26 @@ export default function ContactPage() {
   )}
 </div>
 
-<button onClick={handleSubmit}
-  className="w-full bg-brand text-white py-4 rounded-xl">
-  Send Message
+<button 
+  onClick={handleSubmit}
+  disabled={status === "loading"}
+  className="w-full bg-brand text-white py-4 rounded-xl disabled:opacity-70"
+>
+  {status === "loading" ? "Sending..." : "Send Message"}
 </button>
+
+{/* ✅ ADD HERE */}
+{status === "success" && (
+  <div className="mt-4 p-3 rounded-lg bg-green-50 text-green-700 flex items-center gap-2">
+    <FiCheckCircle /> Message sent successfully!
+  </div>
+)}
+
+{status === "error" && (
+  <p className="text-red-600 mt-4 flex items-center gap-2">
+    <FiAlertCircle /> Failed to send message. Try again.
+  </p>
+)}
 
             </div>
 

@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
             </table>
           </div>
           <div style="background:#f9fafb;padding:16px 32px;text-align:center;font-size:12px;color:#9ca3af;">
-            Pixelwind Technologies · Andhra Pradesh, India · <a href="mailto:info@pixelwind.in" style="color:#1E6BFF;">info@pixelwind.in</a>
+            Pixelwind Technologies · Andhra Pradesh, India · <a href="mailto:@pixelwiinfond.in" style="color:#1E6BFF;">pwtvizag@gmail.com</a>
           </div>
         </div>
       `,

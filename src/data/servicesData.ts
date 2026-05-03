@@ -143,3 +143,81 @@ export const AI_SERVICES: ServiceItem[] = [
     href: "/business-intelligence",
   },
 ];
+
+
+export const INTERNSHIPS = {
+  tech: [
+    {
+      title: "Full Stack Development",
+      desc: "Frontend + Backend + Deployment",
+      icon: FiCode,
+      href: "https://full-stack-landing-page-tau.vercel.app/"
+    },
+    {
+      title: "App Development",
+      desc: "Cross-platform mobile apps",
+      icon: FiSmartphone,
+      href: "#"
+    },
+    {
+      title: "UI/UX Design",
+      desc: "User-centered design",
+      icon: FiPenTool,
+      href: "#"
+    },
+    {
+      title: "Cloud & DevOps",
+      desc: "CI/CD & cloud pipelines",
+      icon: FiCloud,
+      href: "#"
+    }
+  ],
+
+  more: [
+    {
+      title: "Digital Marketing",
+      desc: "SEO & paid campaigns",
+      icon: MdOutlineCampaign,
+      href: "#"
+    },
+    {
+      title: "IT Consulting",
+      desc: "Business tech guidance",
+      icon: FiSettings,
+      href: "#"
+    },
+    {
+      title: "Blockchain",
+      desc: "Smart contracts & dApps",
+      icon: FaProjectDiagram,
+      href: "#"
+    }
+  ],
+
+  ai: [
+    {
+      title: "Generative AI",
+      desc: "AI-powered automation",
+      icon: AiOutlineRobot,
+      href: "https://generative-ai-landing-page.vercel.app/#hero"
+    },
+    {
+      title: "Machine Learning",
+      desc: "Predictive models",
+      icon: AiOutlineRobot,
+      href: "https://ai-ml-landing-page-eight.vercel.app/"
+    },
+    {
+      title: "Data Analytics",
+      desc: "Data visualization",
+      icon: AiOutlineBarChart,
+      href: "https://data-analytics-landing-page-six.vercel.app/"
+    },
+    {
+      title: "Business Intelligence",
+      desc: "Data insights",
+      icon: AiOutlineBarChart,
+      href: "#"
+    }
+  ]
+};

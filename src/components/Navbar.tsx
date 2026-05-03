@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { INTERNSHIPS } from "@/data/servicesData";
 import { useScroll } from "@/hooks/useScroll";
 import { CORE_SERVICES, TECH_SERVICES, AI_SERVICES } from "@/data/servicesData";
 import { FiChevronDown, FiMenu, FiX } from "react-icons/fi";
@@ -15,10 +16,23 @@ export default function Navbar() {
   const megaTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const companyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const [internOpen, setInternOpen] = useState(false);
+  const internTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openIntern = () => {
+    if (internTimer.current) clearTimeout(internTimer.current);
+    setInternOpen(true);
+  };
+
+  const closeIntern = () => {
+    internTimer.current = setTimeout(() => setInternOpen(false), 180);
+  };
+
   const open = () => {
     if (megaTimer.current) clearTimeout(megaTimer.current);
     setMegaOpen(true);
   };
+
   const close = () => {
     megaTimer.current = setTimeout(() => setMegaOpen(false), 180);
   };
@@ -27,6 +41,7 @@ export default function Navbar() {
     if (companyTimer.current) clearTimeout(companyTimer.current);
     setCompanyOpen(true);
   };
+
   const closeCompany = () => {
     companyTimer.current = setTimeout(() => setCompanyOpen(false), 180);
   };
@@ -34,8 +49,7 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "px-6 py-3" : "px-0 py-0"}`}>
-        <div className={`mx-auto relative flex items-center justify-between transition-all duration-500 bg-white
-          ${scrolled ? "max-w-5xl rounded-full shadow-xl border border-gray-200 px-6 h-14" : "max-w-7xl px-8 h-20 border-b border-gray-100"}`}>
+        <div className={`mx-auto relative flex items-center justify-between transition-all duration-500 bg-white overflow-visible ${scrolled ? "max-w-5xl rounded-full shadow-xl border border-gray-200 px-6 h-14" : "max-w-7xl px-8 h-20 border-b border-gray-100"}`}>
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 flex-shrink-0">
@@ -122,6 +136,106 @@ export default function Navbar() {
               )}
             </div>
 
+            {/* INTERNSHIPS */}
+<div className="relative" onMouseEnter={openIntern} onMouseLeave={closeIntern}>
+  <button className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-brand hover:bg-brand-light transition-all">
+    Internships
+    <FiChevronDown className={`transition-transform ${internOpen ? "rotate-180 text-brand" : ""}`} size={14} />
+  </button>
+
+  {internOpen && (
+    <div className="absolute top-[calc(100%+10px)] left-1/2 -translate-x-1/2 w-[720px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-5 z-[999]">
+
+      <div className="grid grid-cols-3 gap-4 items-start">
+
+        {/* TECHNOLOGY */}
+        <div className="bg-gradient-to-b from-blue-600 to-blue-500 rounded-xl p-4 text-white h-full">
+          <div>
+            <p className="text-[10px] font-bold uppercase mb-3">
+              Technology
+            </p>
+
+            {INTERNSHIPS.tech.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <a
+                  key={item.title}
+                  href={item.href}
+                  target="_blank"
+                  className="block px-3 py-2"
+                >
+                  <p className="text-xs font-semibold flex items-center gap-2 text-white">
+                    <Icon size={14} />
+                    {item.title}
+                  </p>
+
+                  <p className="text-[11px] opacity-80">
+                    {item.desc}
+                  </p>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* MORE SERVICES */}
+        <div className="p-4">
+          <p className="text-[10px] font-bold text-brand uppercase mb-3">
+            More Services
+          </p>
+
+          {INTERNSHIPS.more.map((item) => (
+            <a
+              key={item.title}
+              href={item.href}
+              target="_blank"
+              className="block px-3 py-2 rounded-lg hover:bg-brand-light group"
+            >
+              <p className="text-xs font-semibold text-gray-800 flex items-center gap-2 group-hover:text-brand">
+                <item.icon size={14} />
+                {item.title}
+              </p>
+              <p className="text-[11px] text-gray-500">
+                {item.desc}
+              </p>
+            </a>
+          ))}
+        </div>
+
+        {/* AI & DATA */}
+        <div className="bg-gray-50 rounded-xl p-4">
+          <p className="text-[10px] font-bold text-purple-600 uppercase mb-3">
+            AI & Data
+          </p>
+
+          {INTERNSHIPS.ai.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <a
+                key={item.title}
+                href={item.href}
+                target="_blank"
+                className="block px-3 py-2 rounded-lg hover:bg-purple-50 group"
+              >
+                <p className="text-xs font-semibold text-gray-800 flex items-center gap-2 group-hover:text-purple-600">
+                  <Icon size={14} />
+                  {item.title}
+                </p>
+                <p className="text-[11px] text-gray-500">
+                  {item.desc}
+                </p>
+              </a>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  )}
+</div>
+
             {/* COMPANY */}
             <div className="relative" onMouseEnter={openCompany} onMouseLeave={closeCompany}>
               <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-700 hover:text-brand hover:bg-brand-light rounded-lg">
@@ -130,9 +244,8 @@ export default function Navbar() {
               </button>
 
               {companyOpen && (
-                <div className="absolute top-[calc(100%+10px)] left-0 w-[280px] bg-white rounded-3xl shadow-2xl border p-4">
-                  <div className="space-y-4">
-                    <div className="bg-gray-50 p-4 rounded-3xl">
+                <div className="absolute top-[calc(100%+10px)] left-0 w-[380px] bg-white rounded-3xl shadow-2xl border p-4">
+                    <div className="grid grid-cols-2 gap-4">                    <div className="bg-gray-50 p-4 rounded-3xl">
                       <p className="text-xs uppercase text-gray-500 mb-2">Our Company</p>
                       <Link href="/about" className="text-sm font-semibold text-gray-900 hover:text-brand">About</Link>
                     </div>
